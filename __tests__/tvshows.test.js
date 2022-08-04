@@ -64,6 +64,19 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#PUT /tvshows/:id updates listed tv show', async () => {
+    const resp = await request(app).put('/tvshows/2').send({
+      name: 'TRAILER PARK BOYS',
+      seasons: 99,
+      years: '1000-2000'
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toBe('TRAILER PARK BOYS');
+    expect(resp.body.seasons).toBe(99);
+    expect(resp.body.years).toBe('1000-2000');
+    console.log(resp.body);
+  });
+
   afterAll(() => {
     pool.end();
   });
