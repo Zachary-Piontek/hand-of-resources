@@ -49,6 +49,21 @@ describe('backend-express-template routes', () => {
     );
   });
 
+  it('#POST /tvshows create a new tv show', async () => {
+    const newTvShow = {
+      name: 'Married... with Children',
+      seasons: 11,
+      episodes: 259,
+      years: '1987-1997',
+    };
+    const resp = await request(app).post('/tvshows').send(newTvShow);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newTvShow,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
