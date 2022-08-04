@@ -34,6 +34,21 @@ describe('backend-express-template routes', () => {
       },
     ]);
   });
+
+  it('#GET /tvshows:id returns a show', async () => {
+    const resp = await request(app).get('/tvshows/3');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual(     
+      {
+        id: '3',
+        name: 'Everybody Loves Raymond',
+        seasons: 9,
+        episodes: 210,
+        years: '1996-2005',
+      }
+    );
+  });
+
   afterAll(() => {
     pool.end();
   });
