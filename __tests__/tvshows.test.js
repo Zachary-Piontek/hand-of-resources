@@ -77,6 +77,16 @@ describe('backend-express-template routes', () => {
     console.log(resp.body);
   });
 
+  it('#DELETE /tvshows/:id deletes tv show', async () => {
+    const resp = await request(app).delete('/tvshows/1');
+    expect(resp.status).toBe(200);
+    const tvShowDeleted = await request(app).get('/tvshows/1');
+    expect(tvShowDeleted.status).toBe(404);
+    // console.log(tvShowDeleted);
+    console.log(resp.status);
+    console.log(tvShowDeleted.status);
+  });
+
   afterAll(() => {
     pool.end();
   });
