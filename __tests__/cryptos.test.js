@@ -60,6 +60,15 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#PUT /cryptos/:id updates crypto list', async () => {
+    const resp = await request(app).put('/cryptos/1').send({
+      name: 'Sats',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toBe('Sats');
+    console.log(resp.body);
+  });
+
   afterAll(() => {
     pool.end();
   });
