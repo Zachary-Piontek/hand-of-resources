@@ -61,6 +61,15 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#PUT /favorites/:id updates movie list', async () => {
+    const resp = await request(app).put('/favorites/1').send({
+      released: 19911991,
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.released).toBe(19911991);
+    console.log(resp.body);
+  });
+
   afterAll(() => {
     pool.end();
   });
