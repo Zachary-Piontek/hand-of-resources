@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS tvshows;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS favorites;
+DROP TABLE IF EXISTS cryptos;
 
 CREATE TABLE tvshows (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -24,6 +25,13 @@ CREATE TABLE favorites (
     name VARCHAR NOT NULL,
     released INT NOT NULL,
     gross VARCHAR NOT NULL
+);
+
+CREATE TABLE cryptos (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    created INT NOT NULL,
+    creator VARCHAR NOT NULL
 );
 
 INSERT INTO
@@ -84,4 +92,23 @@ VALUES
         'Bugsy',
         1991,
         '$49.1 million dollars worldwide'
+    );
+
+INSERT INTO
+    cryptos (name, created, creator)
+VALUES
+    (
+        'Bitcoin',
+        2008,
+        'Satoshi Nakamoto'
+    ),
+    (
+        'Ethereum',
+        2015,
+        'Vitalik Buterin'
+    ),
+    (
+        'Dogecoin',
+        2013,
+        'Billy Markus'
     );
