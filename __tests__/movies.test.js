@@ -75,9 +75,9 @@ describe('backend-express-template routes', () => {
   it('#DELETE /movies/:id deletes a movie', async () => {
     const resp = await request(app).delete('/movies/1');
     expect(resp.status).toBe(200);
-    const tvShowDeleted = await request(app).get('/movies/1');
-    expect(tvShowDeleted.status).toBe(404);
-    console.log(tvShowDeleted.status);
+    const movieDeleted = await request(app).get('/movies/1');
+    expect(movieDeleted.status).toBe(404);
+    console.log(movieDeleted.status);
   });
 
   afterAll(() => {

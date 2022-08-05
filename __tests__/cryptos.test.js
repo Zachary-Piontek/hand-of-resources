@@ -69,6 +69,14 @@ describe('backend-express-template routes', () => {
     console.log(resp.body);
   });
 
+  it('#DELETE /cryptos/:id deletes a movie', async () => {
+    const resp = await request(app).delete('/cryptos/3');
+    expect(resp.status).toBe(200);
+    const cryptoDeleted = await request(app).get('/cryptos/3');
+    expect(cryptoDeleted.status).toBe(404);
+    console.log(cryptoDeleted.status);
+  });
+
   afterAll(() => {
     pool.end();
   });
