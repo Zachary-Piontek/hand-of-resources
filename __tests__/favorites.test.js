@@ -47,6 +47,20 @@ describe('backend-express-template routes', () => {
     );
   });
 
+  it('#POST /favorites create a new movie', async () => {
+    const updateMovies = {
+      name: 'The Last Boy Scout',
+      released: 1991,
+      gross: '$59.5 million dollars worldwide',
+    };
+    const resp = await request(app).post('/favorites').send(updateMovies);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...updateMovies,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
