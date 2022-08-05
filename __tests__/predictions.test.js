@@ -46,6 +46,20 @@ describe('backend-express-template routes', () => {
     );
   });
 
+  it('#POST /predictions create a prediction', async () => {
+    const newPrediction = {
+      predict: 'Antarctica is the fastest developing country',
+      year: 2099,
+      actual: 'tbh...',
+    };
+    const resp = await request(app).post('/predictions').send(newPrediction);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newPrediction,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
