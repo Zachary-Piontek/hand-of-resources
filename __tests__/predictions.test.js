@@ -60,6 +60,23 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#PUT /predictions/:id updates prediction list', async () => {
+    const resp = await request(app).put('/predictions/1').send({
+      year: 2026,
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.year).toBe(2026);
+    console.log(resp.body);
+  });
+
+  it('#DELETE /predictions/:id deletes a prediction', async () => {
+    const resp = await request(app).delete('/predictions/2');
+    expect(resp.status).toBe(200);
+    const deletePrediction = await request(app).get('/predictions/2');
+    expect(deletePrediction.status).toBe(404);
+    console.log(deletePrediction.status);
+  });
+
   afterAll(() => {
     pool.end();
   });
