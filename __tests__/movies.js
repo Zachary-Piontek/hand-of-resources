@@ -33,6 +33,19 @@ describe('backend-express-template routes', () => {
     ]);
   });
 
+  it('#GET /movies:id returns a movie', async () => {
+    const resp = await request(app).get('/movies/2');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual(     
+      {
+        id: '2',
+        name: 'Goodfellas',
+        released: 1990,
+        gross: '$46.8 million dollars worldwide',
+      }
+    );
+  });
+
   afterAll(() => {
     pool.end();
   });
