@@ -60,6 +60,18 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('#PUT /movies/:id updates movie list', async () => {
+    const resp = await request(app).put('/movies/3').send({
+      name: 'Dances with Wolves Forever',
+      released: 1991,
+      gross: '$999 million dollars worldwide',
+    });
+    expect(resp.status).toBe(200);
+    expect(resp.body.name).toBe('Dances with Wolves Forever');
+    expect(resp.body.released).toBe(1991);
+    console.log(resp.body);
+  });
+
   afterAll(() => {
     pool.end();
   });
