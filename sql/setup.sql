@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS tvshows;
 DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS favorites;
 
 CREATE TABLE tvshows (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -12,6 +13,13 @@ CREATE TABLE tvshows (
 );
 
 CREATE TABLE movies (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    released INT NOT NULL,
+    gross VARCHAR NOT NULL
+);
+
+CREATE TABLE favorites (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR NOT NULL,
     released INT NOT NULL,
@@ -57,4 +65,23 @@ VALUES
         'Dances with Wolves',
         1990,
         '$184.2 million dollars worldwide'
+    );
+
+INSERT INTO
+    favorites (name, released, gross)
+VALUES
+    (
+        'Terminator 2: Judgment Day',
+        1991,
+        '$204.8 million dollars worldwide'
+    ),
+    (
+        'JFK',
+        1991,
+        '$70.4 million dollars worldwide'
+    ),
+    (
+        'Bugsy',
+        1991,
+        '$49.1 million dollars worldwide'
     );
