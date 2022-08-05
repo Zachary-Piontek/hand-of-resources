@@ -46,6 +46,20 @@ describe('backend-express-template routes', () => {
     );
   });
 
+  it('#POST /movies create a new movie', async () => {
+    const newMovies = {
+      name: 'The Hunt for Red October',
+      released: 1990,
+      gross: '$122 million dollars worldwide',
+    };
+    const resp = await request(app).post('/movies').send(newMovies);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...newMovies,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
