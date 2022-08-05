@@ -8,7 +8,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it('#GET /movies returns list of shows', async () => {
+  it('#GET /movies returns list of movies', async () => {
     const resp = await request(app).get('/movies');
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual([

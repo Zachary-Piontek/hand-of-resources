@@ -1,6 +1,7 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS tvshows;
+DROP TABLE IF EXISTS movies;
 
 CREATE TABLE tvshows (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -8,15 +9,14 @@ CREATE TABLE tvshows (
     seasons INT NOT NULL,
     episodes INT NOT NULL,
     years VARCHAR NOT NULL
-)
+);
 
 CREATE TABLE movies (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR NOT NULL,
     released INT NOT NULL,
     gross VARCHAR NOT NULL
-)
-;
+);
 
 INSERT INTO
     tvshows (name, seasons, episodes, years)
