@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS tvshows;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS favorites;
 DROP TABLE IF EXISTS cryptos;
+DROP TABLE IF EXISTS predictions;
+
 
 CREATE TABLE tvshows (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -32,6 +34,13 @@ CREATE TABLE cryptos (
     name VARCHAR NOT NULL,
     created INT NOT NULL,
     creator VARCHAR NOT NULL
+);
+
+CREATE TABLE predictions (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    predict VARCHAR NOT NULL,
+    year INT NOT NULL,
+    actual VARCHAR NOT NULL
 );
 
 INSERT INTO
@@ -111,4 +120,23 @@ VALUES
         'Dogecoin',
         2013,
         'Billy Markus'
+    );
+
+INSERT INTO
+    predictions (predict, year, actual)
+VALUES
+    (
+        'Bitcoin becomes world currency',
+        2032,
+        'tbd...'
+    ),
+    (
+        'Transhuman upgrades',
+        2041,
+        'tbd...'
+    ),
+    (
+        'End of oil age',
+        2060,
+        'tbd...'
     );
