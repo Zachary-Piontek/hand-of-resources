@@ -33,6 +33,19 @@ describe('backend-express-template routes', () => {
     ]);
   });
 
+  it('#GET /cryptos:id returns a movie', async () => {
+    const resp = await request(app).get('/cryptos/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual(     
+      {
+        id: '1',
+        name: 'Bitcoin',
+        created: 2008,
+        creator: 'Satoshi Nakamoto',
+      }
+    );
+  });
+
   afterAll(() => {
     pool.end();
   });
