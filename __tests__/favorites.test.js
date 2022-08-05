@@ -9,7 +9,7 @@ describe('backend-express-template routes', () => {
     return setup(pool);
   });
 
-  it('#GET /favorites returns list of movies', async () => {
+  it('#GET /favorites returns list of favorites', async () => {
     const resp = await request(app).get('/favorites');
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual([
@@ -32,6 +32,19 @@ describe('backend-express-template routes', () => {
         gross: '$49.1 million dollars worldwide',
       },
     ]);
+  });
+
+  it('#GET /favorites:id returns a movie', async () => {
+    const resp = await request(app).get('/favorites/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual(     
+      {
+        id: '1',
+        name: 'Terminator 2: Judgment Day',
+        released: 1991,
+        gross: '$204.8 million dollars worldwide',
+      }
+    );
   });
 
   afterAll(() => {
