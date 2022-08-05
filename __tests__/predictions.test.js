@@ -33,6 +33,19 @@ describe('backend-express-template routes', () => {
     ]);
   });
 
+  it('#GET /predictions:id returns a prediction', async () => {
+    const resp = await request(app).get('/predictions/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual(     
+      {
+        id: '1',
+        predict: 'Bitcoin becomes world currency',
+        year: 2032,
+        actual: 'tbd...',
+      }
+    );
+  });
+
   afterAll(() => {
     pool.end();
   });
