@@ -46,6 +46,20 @@ describe('backend-express-template routes', () => {
     );
   });
 
+  it('#POST /cryptos create a new crypto', async () => {
+    const updateCrypto = {
+      name: 'FOMO',
+      created: 2055,
+      creator: 'Unknown',
+    };
+    const resp = await request(app).post('/cryptos').send(updateCrypto);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      id: expect.any(String),
+      ...updateCrypto,
+    });
+  });
+
   afterAll(() => {
     pool.end();
   });
