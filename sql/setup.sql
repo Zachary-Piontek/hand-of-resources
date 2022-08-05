@@ -8,7 +8,15 @@ CREATE TABLE tvshows (
     seasons INT NOT NULL,
     episodes INT NOT NULL,
     years VARCHAR NOT NULL
-);
+)
+
+CREATE TABLE movies (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    released INT NOT NULL,
+    gross VARCHAR NOT NULL
+)
+;
 
 INSERT INTO
     tvshows (name, seasons, episodes, years)
@@ -30,4 +38,23 @@ VALUES
         9,
         210,
         '1996-2005'
+    );
+
+INSERT INTO
+    movies (name, released, gross)
+VALUES
+    (
+        'Total Recall',
+        1990,
+        '$119.4 million dollars worldwide'
+    ),
+    (
+        'Goodfellas',
+        1990,
+        '$46.8 million dollars worldwide'
+    ),
+    (
+        'Dances with Wolves',
+        1990,
+        '$184.2 million dollars worldwide'
     );
