@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles.css" rel="stylesheet" />
+    <title>prediction Shop</title>
+  </head>
+  <body>
+    <header>
+      <h1>prediction Shop</h1>
+    </header>
+    <main>
+      <p>This API uses a list of predictions. The routes are
+        as follows below.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Route</th>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><pre>/predictions</pre></td>
+            <td>GET</td>
+            <td>Gets a list of predictions</td>
+            <td>
+              <a href="/predictions" target="_blank">List of predictions</a>
+            </td>
+          </tr>
+          <tr>
+            <td><pre>/predictions/:id</pre></td>
+            <td>GET</td>
+            <td>Returns the detail about the prediction.</td>
+            <td>
+              <a href="/predictions/1" target="_blank">Gets a prediction</a>
+            </td>
+          </tr>
+          <tr>
+            <td><pre>/movies</pre></td>
+            <td>GET</td>
+            <td>Gets a list of movies</td>
+            <td>
+              <a href="/movies" target="_blank">List of movies</a>
+            </td>
+          </tr>
+          <tr>
+            <td><pre>/movies/:id</pre></td>
+            <td>GET</td>
+            <td>Returns the detail about the movie.</td>
+            <td>
+              <a href="/movies/1" target="_blank">Gets a movie</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
